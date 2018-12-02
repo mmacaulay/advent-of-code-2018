@@ -7,7 +7,8 @@ namespace advent_of_code_2018
         static void Main(string[] args)
         {
             var day2 = new Day2();
-            day2.Run();
+            day2.Part1();
+            day2.Part2();
         }
     }
 }
