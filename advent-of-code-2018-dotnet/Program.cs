@@ -6,9 +6,12 @@ namespace advent_of_code_2018_dotnet
     {
         static void Main(string[] args)
         {
-            var day2 = new Day2();
-            day2.Part1();
-            day2.Part2();
+            // var day2 = new Day2();
+            // day2.Part1();
+            // day2.Part2();
+
+            var day3 = new Day3();
+            day3.Part1();
         }
     }
 }
