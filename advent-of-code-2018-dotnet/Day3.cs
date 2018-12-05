@@ -51,21 +51,27 @@ namespace advent_of_code_2018_dotnet
       }
       return fabric;
     }
-    public void Part1()
+    public void Run()
     {
       var fabric = CreateFabric();
       var claims = new Dictionary<int, Claim>();
+      var intactClaims = new HashSet<string>();
       using(var file = new StreamReader("day3.txt"))
       {
         string line;
         while((line = file.ReadLine()) != null)
         {
           var claim = Claim.Parse(line);
+          intactClaims.Add(claim.ID);
           for (var x = claim.LeftOffset; x < claim.LeftOffset + claim.Width; x++)
           {
             for (var y = claim.TopOffset; y < claim.TopOffset + claim.Height; y++)
             {
               fabric[x, y].ClaimIDs.Add(claim.ID);
+              if (fabric[x, y].ClaimIDs.Count > 1)
+              {
+                fabric[x, y].ClaimIDs.ToList().ForEach(id => { intactClaims.Remove(id); });
+              }
             }
           }
         }
@@ -81,6 +87,7 @@ namespace advent_of_code_2018_dotnet
       }
 
       Console.WriteLine($"Part 1: {overlapCount}");
+      Console.WriteLine($"Part 1: {intactClaims.First()}");
     }
   }
 }
