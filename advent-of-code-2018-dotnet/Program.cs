@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace advent_of_code_2018
+namespace advent_of_code_2018_dotnet
 {
     class Program
     {

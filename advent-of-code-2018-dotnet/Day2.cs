@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace advent_of_code_2018
+namespace advent_of_code_2018_dotnet
 {
   class Day2
   {
