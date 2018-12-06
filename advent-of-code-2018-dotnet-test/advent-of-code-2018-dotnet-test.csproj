@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\advent-of-code-2018-dotnet\advent-of-code-2018-dotnet.csproj" />
+  </ItemGroup>
+
 </Project>
