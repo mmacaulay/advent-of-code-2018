@@ -21,7 +21,7 @@ namespace advent_of_code_2018_dotnet
 
   public class Day4
   {
-    public void Part1()
+    public void Run()
     {
       var records = File.ReadAllLines("day4.txt").Select(line => {
         var record = new Record();
@@ -43,8 +43,7 @@ namespace advent_of_code_2018_dotnet
         return sleepiestGuard.MinutesAsleep[k] == maxSleepyMoment;
       });
 
-      Console.WriteLine(sleepiestGuard.ID * sleepiestMoment);
-      Console.WriteLine(sleepiestGuard.ID * 29);
+      Console.WriteLine($"Part 1: {sleepiestGuard.ID * sleepiestMoment}");
     }
 
     public Dictionary<int, Guard> TrackGuards (List<Record> records)
@@ -52,8 +51,10 @@ namespace advent_of_code_2018_dotnet
       var guardMap = new Dictionary<int, Guard>();
       var currentGuardID = 0;
       var sleepStart = 0;
+      var sleepiestMoment = 0;
+      var highestSleepCount = 0;
+      var sleepiestGuardID = 0;
       records.ForEach(record => {
-        Console.WriteLine(record.Command);
         if (record.Command.StartsWith("Guard"))
         {
           currentGuardID = Convert.ToInt32(record.Command.Split(" ")[1].Substring(1));
@@ -79,10 +80,17 @@ namespace advent_of_code_2018_dotnet
             else
             {
               guardMap[currentGuardID].MinutesAsleep[i]++;
+              if (guardMap[currentGuardID].MinutesAsleep[i] > highestSleepCount)
+              {
+                sleepiestMoment = i;
+                highestSleepCount = guardMap[currentGuardID].MinutesAsleep[i];
+                sleepiestGuardID = currentGuardID;
+              }
             }
           }
         }
       });
+      Console.WriteLine($"Part 2: {sleepiestGuardID * sleepiestMoment}");
       return guardMap;
     }
 

@@ -14,7 +14,7 @@ namespace advent_of_code_2018_dotnet
             // day3.Run();
 
             var day4 = new Day4();
-            day4.Part1();
+            day4.Run();
         }
     }
 }
